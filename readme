@@ -1,0 +1,32 @@
+Structurile sunt definite in headers.h (la cele date am adaugat una pentru retinerea organizata a culorilor si una pentru imagini).
+In utils.h sunt incluse bibliotecile folosite si sunt definite functiile.
+
+Task 0
+Este realizat in start.c, fisierul din care se apeleaza functiile necesare la urmatoarele task-uri.
+Am retinut fiecare linie citita intr-un pointer, pe care l-am impartim pe componente (strtok), in functie de cerinta.
+
+Task 1
+Functiile necesare se afla in task1.c:
+    Edit:
+        * Am calculat padding-ul dupa urmatoarea formula: padding = (4 - (3 * image.infoheader.width) % 4) % 4, deoarece fiecare 
+        pixel ocupa 3 bytes (pe latimea imaginii) si fiecare rand de pixeli al imaginii trebuie sa inceapa de la un byte multiplu
+        de 4.
+        * La citire nu am retinut padding-ul (fseek).
+    Save:
+        * La scriere am calculat in mod analog padding-ul si l-am trecut cu valoarea 0.
+Quit a fost direct implementat in start.c.
+
+Task 2
+Functia Insert se afla in task2.c.
+M-am asigurat ca nu ies din imaginea initiala, indiferent de dimensiunile celei de-a doua imagini.
+
+Task 3
+Am setat culoarea si grosimea linii in start.c.
+Functiile pentru line, rectangle & triangle se afla in task3.c:
+    * Pentru Line am folosit indicatiile din enunt.
+    * Pentru rectangle & triangle am folosit functia deja realizata Line.
+    * Pentru rectangle este dat coltul stanga-jos de coordonate (x, y).
+
+Task 4
+Am folosit doua cozi (posx si posy), pentru a retine punctele ce trebuie verificate de fiecare data in continuare.
+Pentru a evita anumite erori, odata ce pozitiile first si last ajung la o valoare mai mare le resetam.
