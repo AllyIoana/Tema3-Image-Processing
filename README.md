@@ -125,7 +125,7 @@ Imaginea Obținută:
 (42, 42, 42) (0, 255, 0)  (42, 42, 42) (42, 42, 42)
 (42, 42, 42) (42, 42, 42) (42, 42, 42) (10, 15, 10)
   
-# Task 5 - Clean Valgrind BONUS (20p)
+# Task 5 - Clean Valgrind BONUS
 Intrucat unul din scopurile principale ale acestei teme este alocarea dinamica a memoriei, pentru a rezolva acest task trebuie sa nu aveti nicio eroare sau leak de memorie la rularea utilitarului valgrind pe aceasta.
 
 Utilitarul se va rula folosind urmatoarea comanda:
