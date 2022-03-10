@@ -7,11 +7,17 @@ Procesarea de imagini se refera la aplicarea unor algoritmi specifici pe continu
 O imagine BMP are următoarea structură:
 
 un File Header care are următoarele câmpuri:
+
 signature – 2 octeți - literele 'B' și 'M' în ASCII;
+
 file size – 4 octeți – dimensiunea întregului fișier;
+
 reserved – 4 octeți – nefolosit;
+
 offset – 4 octeți – offsetul de la începutul fișierului până la începutului bitmap-ului, adica al matricii de pixeli.
+
 un Info Header care poate avea structuri diferite, însă noi vom lucra cu cel care se numește BITMAPINFOHEADER. Are următoarele câmpuri:
+
 size – 4 octeți – dimensiunea Info Header-ului, care are o valoare fixă, 40;
 width – 4 octeți – lățimea matricii de pixeli (numărul de coloane);
 height – 4 octeți – înălțimea matricii de pixeli (numărul de rânduri);
@@ -21,8 +27,11 @@ compression – 4 octeți – tipul de compresie. Acest câmp va fi 0;
 image size – 4 octeți – se referă la dimensiunea matricii de pixeli, inclusiv padding-ul adăugat (vedeți mai jos);
 x pixels per meter – 4 octeți – se referă la rezoluția de printare. Pentru a simplifica puțin tema, veți seta acest câmp pe 0. Nu o să printăm imaginile.
 y pixels per meter – la fel ca mai sus;
+
 colors used – numărul de culori din paleta de culori. Aceasta este o secțiune care va lipsi din imaginile noastre BMP, deoarece ea se află în general imediat după Info Header însă doar pentru imaginile care au câmpul bit count mai mic sau egal cu 8. Prin urmare, câmpul va fi setat pe 0;
+
 colors important – numărul de culori importante. Va fi, de asemenea, setat pe 0, ceea ce înseamnă că toate culorile sunt importante.
+
 BitMap-ul, care este matricea de pixeli și care ocupă cea mai mare parte din fișier. Trei lucruri trebuiesc menționate despre aceasta:
 pixelii propriu-ziși se află într-o matrice de dimensiune height x width, însă ea poate avea o dimensiune mai mare de atât din cauza paddingului. Acest padding este adăugat la sfârșitul fiecărei linii astfel încat fiecare linie să înceapă de la o adresă (offset față de începutul fișierului) multiplu de 4. Mare atenție la citire, pentru că acest padding trebuie ignorat (fseek). De asemenea, la scriere va trebui să puneți explicit valoarea 0 pe toți octeții de padding.
 este răsturnată, ceea ce înseamnă că prima linie în matrice conține de fapt pixelii din extremitatea de jos a imaginii. Vedeți exemplul de mai jos;
